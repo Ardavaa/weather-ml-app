@@ -74,17 +74,18 @@ def main():
     st.markdown(html_temp, unsafe_allow_html=True)
 
     # following lines create boxes in which user can enter data required to make prediction
-    Temperature = st.number_input("Temperature")
-    Humidity = st.number_input("Humidity")
-    Wind_Speed = st.number_input("Wind Speed")
-    Atmospheric_Pressure = st.slider("Atmospheric Pressure",
-                                     min_value=800.0, max_value=1200.0,
-                                     step=0.3)
-    Precipitation = st.slider("Precipitation (%)",
-                              min_value=0.0, max_value=110.0,
-                              step=0.1)
+    # number input
+    Temperature = st.number_input("Temperature", value=None, step=1.0, placeholder='Enter the temperature in Celsius')
+    Humidity = st.number_input("Humidity",value=None,  step=1.0, placeholder='Enter the humidity in percentage')
+    Wind_Speed = st.number_input("Wind Speed", value=None, step=1.0, placeholder='Enter the wind speed in km/h')
+    
+    # slider input
+    Atmospheric_Pressure = st.slider("Atmospheric Pressure", min_value=800.0, max_value=1200.0, step=0.3)
+    Precipitation = st.slider("Precipitation (%)", min_value=0.0, max_value=110.0, step=0.1)
     UV_Index = st.slider("UV Index", min_value=0, max_value=14)
     Season = st.selectbox('Season', ('Winter', 'Summer', 'Spring', 'Autumn'))
+
+    # selectbox input
     Visibility = st.slider("Visibility (km)", min_value=0.0, max_value=20.0, step=0.1)
     Cloud_Cover = st.selectbox('Cloud Cover', ('overcast', 'partly cloudy', 'clear', 'cloudy'))
     Location = st.selectbox('Location', ('mountain', 'inland', 'coastal'))
