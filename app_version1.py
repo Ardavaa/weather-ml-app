@@ -2,18 +2,14 @@ import numpy as np
 import pickle as pkl
 import streamlit as st
 
-# load the trained model
 pickle_in = open('classifier.pkl', 'rb')
 classifier = pkl.load(pickle_in)
 
-# load the trained MinMaxScaler
 with open('scaler.pkl', 'rb') as scaler_file:
     mms = pkl.load(scaler_file)
 
 # function to make prediction based on user input 
 def prediction(Temperature, Humidity, Wind_Speed, Precipitation, Cloud_Cover, Atmospheric_Pressure, UV_Index, Season, Visibility, Location):
-    # pre-process user input
-
     # label mapping
     cloud_cover_mapping = {'overcast': 0, 'partly cloudy': 1, 'clear': 2, 'cloudy': 3}
     Cloud_Cover = cloud_cover_mapping[Cloud_Cover]
@@ -43,7 +39,7 @@ def prediction(Temperature, Humidity, Wind_Speed, Precipitation, Cloud_Cover, At
 
     return predictions
 
-# main function in which we define our webpage
+# main functiofor webpage
 def main():
     # page config
     st.set_page_config(page_title="Weather Prediction App", page_icon="⛅", layout="centered")
